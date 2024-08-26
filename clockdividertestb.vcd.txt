@@ -1,0 +1,25 @@
+`timescale 1ns / 1ps
+module tb_clock_divider;
+ reg clock_in;
+ wire clock_out;
+   
+  
+ Clock_divider uut (
+  .clock_in(clock_in), 
+  .clock_out(clock_out)
+ );
+ initial begin
+   $dumpfile("swati.vcd");
+   $dumpvars;
+  clock_in = 0;
+ end
+  always 
+    begin
+      #10 clock_in = ~clock_in;
+ end
+  initial begin
+    #100
+    $finish;
+  end
+      
+endmodule
